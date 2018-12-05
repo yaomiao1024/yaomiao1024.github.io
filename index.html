@@ -104,50 +104,6 @@
         
           <section id="main">
   
-    <article id="post-123" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/05/123/">123</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/12/05/123/" class="article-date">
-	  <time datetime="2018-12-05T11:27:09.000Z" itemprop="datePublished">December 5, 2018</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2、MySQL中的列类型<br>   创建数据表的时候，指定的列类型可以存储 的数据类型。<br>CREATE TABLE book（bid INT（列类型））；<br>（1）    数值类型（数值型的引号可以省略）<br>Tinyint  微整型7、占1个字节 范围是：-128—127<br>Smallint 小整型15、占2个字节  范围是：-32768—32767<br>INT   整型32、占4个字节 范围是：-2147483648—2147483647<br>BIGINT 大整型 占8个字节<br>FIOAT 单精度浮点型，占4个字节，范围3.4e38，范围比INT大很多，可能产生计算误差。（精确度没有INT高）<br>DOUBLE 双精度浮点型，占8个字节，范围比BIGINT大的多<br>DECIMAL(M,D)定点小数，不会产生计算误差，M代表总的有效位数，D代表小数点后的有效位数<br>BOOL：布尔型，只有两个结果TRUE/1、FALSE/0,用于只有两种情况的布局(布尔型TRUE和FALSE不需要加引号)；正在存储数据的时候，会使用TINYINT。<br>（2）    日期时间类型（必须添加引号）<br>DATE 日期型 ‘2018-12-32’<br>TIME 时间型 ‘14:22:30’<br>DATETIME 日期时间型 ‘2018-12-31 14:22:30’<br>（3）    字符串类型（必须添加引号）<br>VARCHAR（M）:变长字符串 m指的是参数，不会产生空间浪费，操作速度相对较慢，M最大值是65535<br>CHAR（M）：定长字符串，可能产生空间浪费，但操作速度比较快，M最大值是255；用于存储一个人的手机号码、身份证号等固定长度的字符。<br>TEXT(M)大型变长字符串，最多存2G。<br>1TB=1024GB<br>1MB=1024KB<br>BT=byte（字节）<br>Bit(位)<br>1byte=8bit<br>二进制：</p>
-<p>练习：I<br>CREATE TABLE T1(<br>Id SMALLINT,<br>Age TINYINT,<br>CommentCount INT,<br>Price DECIMAL(6,2),<br>Phone CHAR(11),<br>(文章)article VARCHAR(8000),<br>PubTime DATE<br>);<br>3、列约束<br>MySQL可以对插入的数据进行特定的验证，只有满足条件才允许插入到数据表中，否则被认为是非法的插入。<br>例如：一个人的性别只能是男或者女，一个人的年龄0到100之间。<br>（1）    主键约束 PRIMARY KEY,<br>声明了主键列上的值不能出现重复，表中查询的记录会按照主键由小到大排序——加快查找的速度；通常主键添加到编号列中。<br>注意：一个表中只能有一个主键<br>（2）    唯一约束 UNIQUE（唯一的）,NULL不允许加引号<br>声明了唯一约束的列上不能插入重复的值，允许插入NULL，而且允许插入多个NULL。<br>NULL表示空，在插入数据，暂时无法确定要保存的数据。<br>如：无法确定员工的姓名、工资。<br>（3）    非空约束 NOT NULL<br>声明了非空约束的列上不能插入NULL<br>（4）    默认值约束 DEFAULT<br>default ‘2016-6-6’<br>可以使用DEFAULT关键字声明默认值，有两种方式可以应用默认值<br>INSERT INTO xz_laptop_family VALUES(40,’苹果’,DEFAULT );<br>INSERT INTO xz_laptop_family（fid,fname） VALUES(50,’华硕’);<br>（5）    检查约束 CHECK<br>检查约束可以对插入的数据进行检验<br>CREATE TABLE student（<br>age TINYINT CHECK（age&gt;=18 AND age&lt;=60）<br>）;<br>MySQL不支持检查约束，会降低数据的插入速度。<br>（6）    外键约束 FOREIGN KEY<br>声明了外键约束的列，取值必须在另一个表的主键列上出现过，列类型要保存一致，取值可以是NULL<br>FOREIGN KEY(familyld)<br>  REFERENCES xz_laptop_family(fid)<br>REFERENCES:引用<br>2、MySQL中的自增列<br>   AUTO_INCREMENT:自动增长，假如一个列声明了自增列，无需手动赋值，直接设置为NULL，会获取当前的最大值，然后加1插入。<br>  注意：<br>自增列允许手动赋值<br>      只适用于整数型的主键列上<br>   INSERT INTO xz_laptop VALUES(NULL,’苹果’,4000,’14.6’,’超越介绍’,’2018-9-6’,1,20 );</p>
-<p>3、简单查询<br>（1）查询特定的列<br>  实例：查询所有员工的姓名、工资、生日<br>  SELECT eid, ename, sex, salary, deptId FROM emp;<br>（2）查询所有的列<br>  SElECT * FROM emp;<br>  SELECT eid, ename, sex, salary, birthday, deptId FROM emp;<br>（3）给列起别名<br>  实例：查询所有员工的姓名和工资，使用汉字的别名显示<br>  SELECT ename AS 姓名,salary AS</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -429,18 +385,6 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2018/12/05/123/">123</a></h6>
-              <span>December 5, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="/2018/12/03/笔记/">笔记</a></h6>
               <span>December 3, 2018</span>
             </div>
@@ -501,7 +445,7 @@
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
